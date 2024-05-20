@@ -9,6 +9,7 @@ import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import axios from "axios";
+import { toast } from "./ui/use-toast";
 
 interface AuthFormProps {}
 
@@ -42,7 +43,13 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
-      axios.post("/api/register", data);
+      axios.post("/api/register", data).catch(() => {
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+      });
     }
 
     if (variant === "LOGIN") {
@@ -122,10 +129,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
           <div className="mt-8 flex gap-2">
             <Button className="inline-flex w-full justify-center bg-primary" onClick={() => socialAction("github")}>
-              <BsGithub className="mr-2 h-4 w-4" /> Login with Github
+              <BsGithub className="mr-2 h-4 w-4" /> Github
             </Button>
             <Button className="inline-flex w-full justify-center" onClick={() => socialAction("google")}>
-              <BsGoogle className="mr-2 h-4 w-4" /> Login with Google
+              <BsGoogle className="mr-2 h-4 w-4" /> Google
             </Button>
           </div>
         </CardContent>
