@@ -10,6 +10,7 @@ import { Label } from "./ui/label";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import axios from "axios";
 import { toast } from "./ui/use-toast";
+import { signIn } from "next-auth/react";
 
 interface AuthFormProps {}
 
@@ -43,17 +44,39 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
-      axios.post("/api/register", data).catch(() => {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "There was a problem with your request.",
-        });
-      });
+      axios
+        .post("/api/register", data)
+        .catch(() => {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem with your request.",
+          });
+        })
+        .finally(() => setIsLoading(false));
     }
 
     if (variant === "LOGIN") {
-      // NEXT AUTH LOGIN
+      signIn("credentials", {
+        ...data,
+        redirect: false,
+      })
+        .then((callback) => {
+          if (callback?.error) {
+            toast({
+              variant: "destructive",
+              title: "Uh oh! Something went wrong.",
+              description: "Invalid Credentials.",
+            });
+          }
+
+          if (callback?.ok && !callback?.error) {
+            toast({
+              description: "Logged in!",
+            });
+          }
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 
