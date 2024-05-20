@@ -8,6 +8,7 @@ import { ButtonAuth } from "./ui/buttonAuth";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { BsGithub, BsGoogle } from "react-icons/bs";
+import axios from "axios";
 
 interface AuthFormProps {}
 
@@ -41,7 +42,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
-      // AXIOS call
+      axios.post("/api/register", data);
     }
 
     if (variant === "LOGIN") {
@@ -64,16 +65,37 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
               {variant === "REGISTER" && (
                 <div className="flex flex-col space-y-1.5 gap-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" type="name" placeholder="" register={register} errors={errors} disabled={isLoading} />
+                  <Input
+                    id="name"
+                    type="name"
+                    placeholder=""
+                    register={register}
+                    errors={errors}
+                    disabled={isLoading}
+                  />
                 </div>
               )}
               <div className="flex flex-col space-y-1.5 gap-2">
                 <Label htmlFor="email">E-mail address</Label>
-                <Input id="email" type="email" placeholder="" register={register} errors={errors} disabled={isLoading} />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder=""
+                  register={register}
+                  errors={errors}
+                  disabled={isLoading}
+                />
               </div>
               <div className="flex flex-col space-y-1.5 gap-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" placeholder="" register={register} errors={errors} disabled={isLoading} />
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder=""
+                  register={register}
+                  errors={errors}
+                  disabled={isLoading}
+                />
               </div>
               <div className="flex justify-center flex-col">
                 <ButtonAuth
@@ -108,8 +130,12 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
           </div>
         </CardContent>
         <CardFooter className="flex justify-center text-sm mb-[-1rem] gap-2">
-          <div className="hidden text-zinc-700 dark:block">{variant === "LOGIN" ? "New to Chatty?" : "Already have an account?"}</div>
-          <div className="text-zinc-400 dark:hidden">{variant === "LOGIN" ? "New to Chatty?" : "Already have an account?"}</div>
+          <div className="hidden text-zinc-700 dark:block">
+            {variant === "LOGIN" ? "New to Chatty?" : "Already have an account?"}
+          </div>
+          <div className="text-zinc-400 dark:hidden">
+            {variant === "LOGIN" ? "New to Chatty?" : "Already have an account?"}
+          </div>
           <div className="hidden underline cursor-pointer text-zinc-700 dark:block" onClick={toggleVariant}>
             {variant === "LOGIN" ? "Create an account" : "Login"}
           </div>
