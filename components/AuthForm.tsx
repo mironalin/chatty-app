@@ -2,7 +2,7 @@
 
 import { FC, useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardFooter } from "./ui/card";
 import { Input } from "./ui/input";
 import { ButtonAuth } from "./ui/buttonAuth";
 import { Button } from "./ui/button";

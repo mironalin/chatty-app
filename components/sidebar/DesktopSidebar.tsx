@@ -5,9 +5,7 @@ import { useState } from "react";
 import DesktopItem from "./DesktopItem";
 import { ThemeToggle } from "../theme-toggle/theme-toggle";
 import { User } from "@prisma/client";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import ActivityStatus from "../ui/activitystatus";
-import Image from "next/image";
+import AvatarStatus from "../ui/avatarstatus";
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -47,11 +45,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
           "
       >
         <ThemeToggle />
-        <div onClick={() => setIsOpen(true)} className="relative cursor-pointer hover:opacity-75 transition">
-          <Avatar>
-            <AvatarImage src={currentUser.image! || "/images/placeholder/placeholder.jpg"} alt={currentUser.name!} />
-          </Avatar>
-          <ActivityStatus />
+        <div onClick={() => setIsOpen(true)} className="cursor-pointer hover:opacity-75 transition">
+          <AvatarStatus user={currentUser} />
         </div>
       </nav>
     </div>

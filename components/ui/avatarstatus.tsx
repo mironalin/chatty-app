@@ -1,27 +1,47 @@
-import { User } from "@prisma/client";
-import { FC } from "react";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import ActivityStatus from "../ui/activitystatus";
+"use client";
 
-interface AvatarStatusProps {
+import Image from "next/image";
+import { User } from "@prisma/client";
+
+interface AvatarProps {
   user?: User;
 }
 
-const AvatarStatus: FC<AvatarStatusProps> = ({ user }) => {
+const Avatar: React.FC<AvatarProps> = ({ user }) => {
   return (
     <div className="relative">
-      <Avatar className="flex justify-center items-center">
-        <AvatarImage
-          src={user?.image! || "images/placeholder/placeholder.jpg"}
-          alt={user?.image!}
-          width={6}
-          height={6}
-          className="w-10 h-10 "
-        />
-      </Avatar>
-      <ActivityStatus />
+      <div
+        className="
+          relative
+          inline-block
+          rounded-full
+          overflow-hidden
+          h-9
+          w-9
+          md:h-11
+          md:w-11
+        "
+      >
+        <Image alt="Avatar" src={user?.image || "/images/placeholder/placeholder.jpg"} fill />
+      </div>
+      <span
+        className="
+          absolute
+          block
+          rounded-full
+          bg-green-500
+          ring-2
+          ring-white
+          top-0
+          right-0
+          h-2
+          w-2
+          md:h-3
+          md:w-3
+        "
+      />
     </div>
   );
 };
 
-export default AvatarStatus;
+export default Avatar;
