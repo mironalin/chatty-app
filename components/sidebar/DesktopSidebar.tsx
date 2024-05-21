@@ -42,17 +42,14 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
             flex-col
             justify-between
             items-center
-            space-y-2
+            space-y-1
+            gap-2
           "
       >
         <ThemeToggle />
         <div onClick={() => setIsOpen(true)} className="relative cursor-pointer hover:opacity-75 transition">
           <Avatar>
-            <AvatarImage src={currentUser.image! || "images/placeholder.jpg"} alt={currentUser.name!} />
-            <AvatarFallback className="grid place-items-center">
-              {currentUser.name?.split(" ")[0][0]}
-              {currentUser.name?.split(" ")[1][0]}
-            </AvatarFallback>
+            <AvatarImage src={currentUser.image! || "/images/placeholder/placeholder.jpg"} alt={currentUser.name!} />
           </Avatar>
           <ActivityStatus />
         </div>

@@ -33,10 +33,7 @@ const UserBoxMobile: React.FC<UserBoxMobileProps> = ({ data }) => {
   }, [data, router]);
 
   return (
-    <div
-      onClick={handleClick}
-      className="w-full relative flex items-center space-x-3 p-3 hover:bg-accent rounded-lg transition cursor-pointer"
-    >
+    <div onClick={handleClick} className="cursor-pointer">
       <TooltipProvider key={data.id}>
         <Tooltip key={data.id} delayDuration={0}>
           <TooltipTrigger asChild>
