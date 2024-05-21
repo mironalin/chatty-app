@@ -4,13 +4,9 @@ import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { Avatar, AvatarImage } from "../ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
-
-import clsx from "clsx";
-import ActivityStatus from "../ui/activitystatus";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+import AvatarStatus from "../ui/avatarstatus";
 
 interface UserBoxMobileProps {
   data: User;
@@ -39,18 +35,7 @@ const UserBox: React.FC<UserBoxMobileProps> = ({ data }) => {
       onClick={handleClick}
       className={cn(buttonVariants({ variant: "ghost", size: "xl" }), "shrink justify-start gap-4 cursor-pointer")}
     >
-      <div className="relative">
-        <Avatar className="flex justify-center items-center">
-          <AvatarImage
-            src={data.image! || "images/placeholder/placeholder.jpg"}
-            alt={data.image!}
-            width={6}
-            height={6}
-            className="w-10 h-10 "
-          />
-        </Avatar>
-        <ActivityStatus />
-      </div>
+      <AvatarStatus user={data} />
       <div className="flex flex-col max-w-28">
         <span>{data.name}</span>
       </div>
