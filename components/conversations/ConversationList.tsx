@@ -42,7 +42,7 @@ const ConversationList: FC<ConversationListProps> = ({ isCollapsed, initialItems
               <span className="text-zinc-300">({items.length})</span>
             </div>
 
-            <div className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9")}>
+            <div className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 cursor-pointer")}>
               <UserPlus size={20} />
             </div>
           </div>
