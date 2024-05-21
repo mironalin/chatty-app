@@ -1,7 +1,7 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import Sidebar from "@/components/Sidebar";
+import { ThemeProvider } from "@/components/theme-toggle/theme-provider";
+import Sidebar from "@/components/sidebar/Sidebar";
 import getUsers from "../actions/getUsers";
-import UserList from "@/components/UserList";
+import UserList from "@/components/users/UserList";
 
 export default async function UsersLayout({ children }: { children: React.ReactNode }) {
   const users = await getUsers();

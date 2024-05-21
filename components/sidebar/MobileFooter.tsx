@@ -4,7 +4,7 @@ import useConversation from "@/app/hooks/useConversation";
 import useRoutes from "@/app/hooks/useRoutes";
 
 import MobileItem from "./MobileItem";
-import { ThemeToggleMobile } from "./theme-toggle-mobile";
+import { ThemeToggleMobile } from "../theme-toggle/theme-toggle-mobile";
 
 const MobileFooter = () => {
   const routes = useRoutes();

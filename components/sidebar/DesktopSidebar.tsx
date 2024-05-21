@@ -3,10 +3,10 @@
 import useRoutes from "@/app/hooks/useRoutes";
 import { useState } from "react";
 import DesktopItem from "./DesktopItem";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "../theme-toggle/theme-toggle";
 import { User } from "@prisma/client";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import ActivityStatus from "./ui/activitystatus";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import ActivityStatus from "../ui/activitystatus";
 import Image from "next/image";
 
 interface DesktopSidebarProps {

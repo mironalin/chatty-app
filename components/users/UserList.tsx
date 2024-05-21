@@ -7,8 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import UserBoxMobile from "./UserBoxMobile";
 import UserBox from "./UserBox";
-import { Avatar, AvatarImage } from "./ui/avatar";
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
+
 interface UserListProps {
   isCollapsed: boolean;
   items: User[];

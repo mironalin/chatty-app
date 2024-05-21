@@ -4,11 +4,11 @@ import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
-import { Avatar, AvatarImage } from "./ui/avatar";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import { Avatar, AvatarImage } from "../ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
 
-import ActivityStatus from "./ui/activitystatus";
+import ActivityStatus from "../ui/activitystatus";
 import { cn } from "@/lib/utils";
 
 interface UserBoxMobileProps {

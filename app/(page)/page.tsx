@@ -1,5 +1,5 @@
 import AuthForm from "@/components/AuthForm";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle/theme-toggle";
 import Image from "next/image";
 
 export default function Home() {

@@ -4,12 +4,11 @@ import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
-import { Avatar, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarImage } from "../ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
 
 import clsx from "clsx";
-import ActivityStatus from "./ui/activitystatus";
+import ActivityStatus from "../ui/activitystatus";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 

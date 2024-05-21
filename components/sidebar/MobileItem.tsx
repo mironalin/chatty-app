@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import clsx from "clsx";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 interface MobileItemProps {
   icon: any;
