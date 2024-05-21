@@ -7,6 +7,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { User } from "@prisma/client";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import ActivityStatus from "./ui/activitystatus";
+import Image from "next/image";
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -47,8 +48,11 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
         <ThemeToggle />
         <div onClick={() => setIsOpen(true)} className="relative cursor-pointer hover:opacity-75 transition">
           <Avatar>
-            <AvatarImage src={currentUser.image!} alt={currentUser.name!} />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarImage src={currentUser.image! || "images/placeholder.jpg"} alt={currentUser.name!} />
+            <AvatarFallback className="grid place-items-center">
+              {currentUser.name?.split(" ")[0][0]}
+              {currentUser.name?.split(" ")[1][0]}
+            </AvatarFallback>
           </Avatar>
           <ActivityStatus />
         </div>
