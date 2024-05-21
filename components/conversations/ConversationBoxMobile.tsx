@@ -1,17 +1,17 @@
+"use client";
+
 import { FC } from "react";
 
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Conversation, Message, User } from "@prisma/client";
-import { format } from "date-fns";
 import { useSession } from "next-auth/react";
 import { FullConversationType } from "@/app/types";
 import useOtherUser from "@/app/hooks/useOtherUser";
-import { Avatar, AvatarImage } from "../ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
-import ActivityStatus from "../ui/activitystatus";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import AvatarStatus from "../ui/avatarstatus";
 
 interface ConversationBoxMobileProps {
   data: FullConversationType;
@@ -75,18 +75,7 @@ const ConversationBoxMobile: FC<ConversationBoxMobileProps> = ({ data, selected 
                 selected ? "bg-accent" : "bg-background"
               )}
             >
-              <div className="relative">
-                <Avatar className="flex justify-center items-center">
-                  <AvatarImage
-                    src={otherUser.image || "images/placeholder/placeholder.jpg"}
-                    alt={otherUser.image || "images/placeholder/placeholder.jpg"}
-                    width={6}
-                    height={6}
-                    className="w-10 h-10 "
-                  />
-                </Avatar>
-                <ActivityStatus />
-              </div>
+              <AvatarStatus user={otherUser} />
               <span className="sr-only">{data.name || otherUser.name}</span>
             </div>
           </TooltipTrigger>
