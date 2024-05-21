@@ -10,8 +10,8 @@
 
   @layer base {
     :root {
-      --background: 240 4.8% 95.9%;
-      --foreground: 240 10% 3.9%;
+      --background: 240 4.8% 95.9%; /* 244 244 245 zinc-100 */
+      --foreground: 240 10% 3.9%;  /* 9 9 11 zinc-950 */
 
       --card: 0 0% 100%;
       --card-foreground: 240 10% 3.9%;
@@ -42,14 +42,14 @@
     }
 
     .dark {
-      --background: 240 10% 3.9%;
-      --foreground: 0 0% 98%;
+      --background: 240 10% 3.9%; /* 9 9 11 zinc-950 */
+      --foreground: 240 4.8% 95.9%; /* 244 244 245 zinc-100 */
 
       --card: 240 10% 3.9%;
-      --card-foreground: 0 0% 98%;
+      --card-foreground: 240 4.8% 95.9%;
 
       --popover: 240 10% 3.9%;
-      --popover-foreground: 0 0% 98%;
+      --popover-foreground: 240 4.8% 95.9%;
 
       --primary: 0 0% 98%;
       --primary-foreground: 240 5.9% 10%;
