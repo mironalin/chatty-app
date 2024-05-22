@@ -23,16 +23,15 @@ import { Input } from "../ui/input";
 import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";
 import { cn } from "@/lib/utils";
+import { ButtonAuth } from "../ui/buttonAuth";
 
 interface SettingsDialogProps {
-  setIsOpen?: any;
   isOpen?: boolean;
   onClose: () => void;
   currentUser: User;
-  children: React.ReactNode;
 }
 
-const SettingsDialog: FC<SettingsDialogProps> = ({ setIsOpen, children, isOpen, onClose, currentUser }) => {
+const SettingsDialog: FC<SettingsDialogProps> = ({ isOpen, onClose, currentUser }) => {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -84,8 +83,8 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ setIsOpen, children, isOpen, 
   });
 
   return (
-    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
+    <AlertDialog open={isOpen}>
+      <AlertDialogTrigger asChild></AlertDialogTrigger>
       <AlertDialogContent
         // Fix for Cloudinary upload button
         //@ts-ignore
@@ -111,7 +110,7 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ setIsOpen, children, isOpen, 
           <div className="mt- flex flex-col gap-y-8">
             <div className="flex flex-col gap-4">
               <Label>Name</Label>
-              <Input disabled={isLoading} id="Name" errors={errors} required register={register} />
+              <Input disabled={isLoading} id="name" errors={errors} required register={register} />
             </div>
             <div className="flex flex-col gap-4">
               <Label>Photo</Label>
@@ -139,9 +138,10 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ setIsOpen, children, isOpen, 
               <AlertDialogCancel className="w-full" disabled={isLoading} onClick={onClose}>
                 Cancel
               </AlertDialogCancel>
-              <Button type="submit" disabled={isLoading} className="w-full">
+
+              <ButtonAuth type="submit" disabled={isLoading} className="w-full">
                 Save
-              </Button>
+              </ButtonAuth>
             </AlertDialogFooter>
           </div>
         </form>

@@ -10,10 +10,9 @@ import SettingsDialog from "./SettingsDialog";
 
 interface DesktopSidebarProps {
   currentUser: User;
-  children: React.ReactNode;
 }
 
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, children }) => {
+const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,6 +20,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, children }
 
   return (
     <>
+      <SettingsDialog currentUser={currentUser} isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 lg:w-20 xl:px-6 lg:overflow-y-auto lg:border-r-[1px] lg:pb-4 lg:flex lg:flex-col justify-between">
         <nav className="mt-4 flex flex-col justify-between">
           <ul role="list" className="flex flex-col items-center space-y-2">
@@ -38,24 +38,17 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser, children }
         </nav>
         <nav
           className="
-            mt-4
-            flex
-            flex-col
-            justify-between
-            items-center
-            space-y-1
-            gap-2
-          "
+          mt-4
+          flex
+          flex-col
+          justify-between
+          items-center
+          space-y-1
+          gap-2
+        "
         >
           <ThemeToggle />
-          <SettingsDialog
-            setIsOpen={setIsOpen}
-            currentUser={currentUser}
-            isOpen={isOpen}
-            onClose={() => setIsOpen(false)}
-          >
-            {children}
-          </SettingsDialog>
+
           <div onClick={() => setIsOpen(true)} className="cursor-pointer hover:opacity-75 transition">
             <AvatarStatus user={currentUser} />
           </div>
