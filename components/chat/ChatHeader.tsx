@@ -35,7 +35,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
         <AvatarStatus user={otherUser} />
         <div className="flex flex-col">
           <div className="font-medium">{conversation.name || otherUser.name}</div>
-          <div className="text-sm font-light text-zinc-500">{statusText}</div>
+          <div className="text-sm font-light text-primary/60">{statusText}</div>
         </div>
       </div>
       <div>
@@ -43,19 +43,19 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
           onClick={() => {}}
           className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 transition cursor-pointer")}
         >
-          <Phone size={20} className="text-zinc-500" />
+          <Phone size={20} className="text-primary/50" />
         </div>
         <div
           onClick={() => {}}
           className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 transition cursor-pointer")}
         >
-          <Video size={20} className="text-zinc-500" />
+          <Video size={20} className="text-primary/50" />
         </div>
         <div
           onClick={() => {}}
           className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 transition cursor-pointer")}
         >
-          <Info size={20} className="text-zinc-500" />
+          <Info size={20} className="text-primary/50" />
         </div>
       </div>
     </div>
