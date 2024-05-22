@@ -4,11 +4,11 @@ import Image from "next/image";
 import { User } from "@prisma/client";
 import ActivityStatus from "./activitystatus";
 
-interface AvatarProps {
+interface AvatarStatusProps {
   user?: User;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ user }) => {
+const AvatarStatus: React.FC<AvatarStatusProps> = ({ user }) => {
   return (
     <div className="relative">
       <div className="relative inline-block rounded-full overflow-hidden h-9 w-9 md:h-11 md:w-11">
@@ -19,4 +19,4 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
   );
 };
 
-export default Avatar;
+export default AvatarStatus;
