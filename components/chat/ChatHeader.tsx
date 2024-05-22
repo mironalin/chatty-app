@@ -41,7 +41,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
             <div className="text-sm font-light text-primary/60">{statusText}</div>
           </div>
         </div>
-        <div>
+        <div className="flex">
           <div
             onClick={() => {}}
             className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 transition cursor-pointer")}

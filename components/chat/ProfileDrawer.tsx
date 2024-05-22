@@ -52,7 +52,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ data }) => {
           <Info size={20} className="text-primary/50" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-11/12 sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Chat Information</DialogTitle>
         </DialogHeader>
