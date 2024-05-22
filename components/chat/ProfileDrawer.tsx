@@ -33,6 +33,7 @@ import {
 import useRoutes from "@/app/hooks/useRoutes";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
+// import { toast } from "react-hot-toast";
 import useConversation from "@/app/hooks/useConversation";
 import axios from "axios";
 interface ProfileDrawerProps {
@@ -44,6 +45,8 @@ interface ProfileDrawerProps {
 
 const ProfileDrawer: FC<ProfileDrawerProps> = ({ data, onClose }) => {
   const otherUser = useOtherUser(data);
+
+  onClose = () => setOpenAlertDialog(false);
 
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), "PP");
@@ -78,28 +81,26 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ data, onClose }) => {
         router.push("/conversations");
         router.refresh();
       })
-      .catch(() =>
+      .catch(() => {
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
           description: "There was a problem with your request.",
-        })
-      )
+        });
+      })
       .finally(() => setIsLoading(false));
   }, [conversationId, router, onClose]);
-
   return (
     <>
-      {/* <Modal isOpen onClose={() => {}} /> */}
-      <Dialog open={openMainDialog} onOpenChange={setOpenMainDialog}>
-        <DialogTrigger asChild>
+      <Dialog>
+        <DialogTrigger>
           <Button variant="ghost" size="icon">
             <Info size={20} className="text-primary/50" />
           </Button>
         </DialogTrigger>
         <DialogContent className="w-11/12 sm:max-w-md rounded-lg">
           <DialogHeader>
-            <DialogTitle>Chat Information</DialogTitle>
+            <DialogTitle asChild>Chat Information</DialogTitle>
           </DialogHeader>
           <div className="flex flex-col items-center">
             <div>
@@ -111,7 +112,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ data, onClose }) => {
             </div>
             <AlertDialog open={openAlertDialog} onOpenChange={setOpenAlertDialog}>
               <div className="my-6">
-                <AlertDialogTrigger asChild>
+                <AlertDialogTrigger>
                   <Button className="flex items-center justify-center gap-1" variant="destructive">
                     <Trash2 size={15} />
                     <p className="text-sm font-light">Delete</p>
