@@ -9,6 +9,7 @@ import { Button, buttonVariants } from "../ui/button";
 import { Image, SendHorizontal } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Input } from "../ui/input";
+import { CldUploadButton } from "next-cloudinary";
 
 interface ChatBottomBarProps {}
 
@@ -34,11 +35,20 @@ const ChatBottomBar: FC<ChatBottomBarProps> = () => {
     });
   };
 
+  const handleUpload = (result: any) => {
+    axios.post("/api/messages", {
+      image: result?.info?.secure_url,
+      conversationId,
+    });
+  };
+
   return (
     <div className="p-2 flex w-full items-center gap-2 lg:gap-4">
-      <div className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 cursor-pointer")}>
-        <Image size={25} className="text-primary/50" />
-      </div>
+      <CldUploadButton options={{ maxFiles: 1 }} onSuccess={handleUpload} uploadPreset="vm9o9xsb">
+        <div className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 cursor-pointer")}>
+          <Image size={25} className="text-primary/50" />
+        </div>
+      </CldUploadButton>
 
       <AnimatePresence initial={false}>
         <motion.div
