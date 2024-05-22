@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({ className, type, id, required, register, 
       autoComplete={id}
       disabled={disabled}
       {...register(id, { required })}
-      className={clsx(
+      className={cn(
         "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         errors[id] && "focus:ring-rose-600",
         disabled && "opacity-50 cursor-default",
