@@ -57,7 +57,9 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ data }) => {
           <DialogTitle>Chat Information</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col items-center">
-          <div>{data.isGroup ? <AvatarGroup users={data.users} /> : <AvatarStatus user={otherUser} />}</div>
+          <div>
+            <AvatarStatus user={otherUser} />
+          </div>
           <div className="flex flex-col items-center justify-center">
             <div>{title}</div>
             <div className="text-xs text-primary/50">{statusText}</div>
