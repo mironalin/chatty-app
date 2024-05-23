@@ -8,7 +8,7 @@ import { ChevronLeft, Info, Phone, Video } from "lucide-react";
 import AvatarStatus from "../ui/avatarstatus";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
-import ProfileDrawer from "./ProfileDrawer";
+import ProfileDrawer from "./ProfileDialog";
 
 interface ChatHeaderProps {
   conversation: Conversation & {
@@ -18,7 +18,7 @@ interface ChatHeaderProps {
 
 const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
   const otherUser = useOtherUser(conversation);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
@@ -30,6 +30,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
 
   return (
     <>
+      <ProfileDrawer isOpen={isDrawerOpen} data={conversation} onClose={() => setIsDrawerOpen(false)} />
       <div className="w-full flex border-b-[1px] sm:px-4 py-6 px-4 lg:px-6 justify-between items-center">
         <div className="flex gap-3 items-center">
           <Link href="/conversations" className="cursor-pointer lg:hidden block">
@@ -54,7 +55,12 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
           >
             <Video size={20} className="text-primary/50" />
           </div>
-          <ProfileDrawer data={conversation} />
+          <div
+            onClick={() => setIsDrawerOpen(true)}
+            className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9 transition cursor-pointer")}
+          >
+            <Info size={20} className="text-primary/50" />
+          </div>
         </div>
       </div>
     </>
