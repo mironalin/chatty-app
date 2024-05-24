@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import { useState } from "react";
 import { Avatar, AvatarImage } from "../ui/avatar";
+import ImageDialog from "./ImageDialog";
 
 interface MessageBoxProps {
   data: FullMessageType;
@@ -47,34 +48,21 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
         </div>
         <div className={message}>
           {data.image ? (
-            <Image
-              onClick={() => setImageModalOpen(true)}
-              alt="Image"
-              height="289"
-              width="289"
-              src={data.image}
-              className="
-                object-cover
-                cursor-pointer
-                hover:scale-110
-                transition
-                translate
-              "
-            />
+            <ImageDialog src={data.image}>
+              <Image
+                alt="Image"
+                height="289"
+                width="289"
+                src={data.image}
+                className=" object-cover cursor-pointer hover:scale-110 transition translate"
+              />
+            </ImageDialog>
           ) : (
             <div>{data.body}</div>
           )}
         </div>
         {isLast && isOwn && seenList.length > 0 && (
-          <div
-            className="
-              text-xs
-              font-light
-              text-primary/60
-            "
-          >
-            {`Seen by ${seenList}`}
-          </div>
+          <div className="text-xs font-light text-primary/60">{`Seen by ${seenList}`}</div>
         )}
       </div>
     </div>
