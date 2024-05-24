@@ -107,7 +107,7 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ isOpen, onClose, currentUser 
           <AlertDialogDescription>Edit your public information</AlertDialogDescription>
         </AlertDialogHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mt- flex flex-col gap-y-8">
+          <div className="mt-6 flex flex-col gap-y-8">
             <div className="flex flex-col gap-4">
               <Label>Name</Label>
               <Input disabled={isLoading} id="name" errors={errors} required register={register} />
@@ -139,9 +139,9 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ isOpen, onClose, currentUser 
                 Cancel
               </AlertDialogCancel>
 
-              <ButtonAuth type="submit" disabled={isLoading} className="w-full">
+              <AlertDialogAction type="submit" disabled={isLoading} className="w-full">
                 Save
-              </ButtonAuth>
+              </AlertDialogAction>
             </AlertDialogFooter>
           </div>
         </form>
