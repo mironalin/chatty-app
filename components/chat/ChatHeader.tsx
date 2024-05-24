@@ -9,6 +9,7 @@ import AvatarStatus from "../ui/avatarstatus";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
 import ProfileDrawer from "./ProfileDialog";
+import AvatarGroup from "../ui/avatargroup";
 
 interface ChatHeaderProps {
   conversation: Conversation & {
@@ -36,7 +37,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
           <Link href="/conversations" className="cursor-pointer lg:hidden block">
             <ChevronLeft size={32} />
           </Link>
-          <AvatarStatus user={otherUser} />
+          {conversation.isGroup ? <AvatarGroup users={conversation.users} /> : <AvatarStatus user={otherUser} />}
           <div className="flex flex-col">
             <div className="font-medium">{conversation.name || otherUser.name}</div>
             <div className="text-sm font-light text-primary/60">{statusText}</div>

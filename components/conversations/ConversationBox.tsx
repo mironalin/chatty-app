@@ -12,6 +12,8 @@ import useOtherUser from "@/app/hooks/useOtherUser";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import AvatarStatus from "../ui/avatarstatus";
+import AvatarGroup from "../ui/avatargroup";
+import clsx from "clsx";
 
 interface ConversationBoxProps {
   data: FullConversationType;
@@ -48,7 +50,7 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
       return false;
     }
 
-    return seenArray.filter((user) => user.email === user.email).length !== 0;
+    return seenArray.filter((user) => user.email === userEmail).length !== 0;
   }, [userEmail, lastMessage]);
 
   const lastMessageText = useMemo(() => {
@@ -73,13 +75,17 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
         selected ? "bg-accent" : "bg-background"
       )}
     >
-      <AvatarStatus user={otherUser} />
-      <div className="flex justify-between items-center flex-1">
-        <div className="flex flex-col max-w-38">
-          <span>{data.name || otherUser.name}</span>
-          <p className={cn(`truncate text-xs`, hasSeen ? `text-zinc-500` : `font-semibold`)}>{lastMessageText}</p>
+      {data.isGroup ? <AvatarGroup users={data.users} /> : <AvatarStatus user={otherUser} />}
+      <div className="min-w-0 flex-1">
+        <div className="focus:outline-none">
+          <div className="flex justify-between items-center mb-1">
+            <p className="text-md font-medium">{data.name || otherUser.name}</p>
+            {lastMessage?.createdAt && (
+              <p className="text-xs font-light">{format(new Date(lastMessage.createdAt), "p")}</p>
+            )}
+          </div>
+          <p className={clsx(`truncate text-sm`, hasSeen ? "text-primary/60" : "font-medium")}>{lastMessageText}</p>
         </div>
-        {lastMessage?.createdAt && <p className="text-xs font-light">{format(new Date(lastMessage.createdAt), "p")}</p>}
       </div>
     </div>
   );

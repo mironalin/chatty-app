@@ -16,6 +16,7 @@ import {
   AlertDialogCancel,
 } from "../ui/alert-dialog";
 import ConfirmDeleteDialog from "./ConfirmDeleteDialog";
+import AvatarGroup from "../ui/avatargroup";
 
 interface ProfileDialogProps {
   isOpen?: boolean;
@@ -55,9 +56,7 @@ const ProfileDialog: FC<ProfileDialogProps> = ({ isOpen, data, onClose }) => {
             <AlertDialogTitle asChild>Chat Information</AlertDialogTitle>
           </AlertDialogHeader>
           <div className="flex flex-col items-center">
-            <div>
-              <AvatarStatus user={otherUser} />
-            </div>
+            <div>{data.isGroup ? <AvatarGroup users={data.users} /> : <AvatarStatus user={otherUser} />}</div>
             <div className="flex flex-col items-center justify-center">
               <div>{title}</div>
               <div className="text-xs text-primary/50">{statusText}</div>
