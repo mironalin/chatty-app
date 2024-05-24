@@ -7,6 +7,7 @@ import { useCallback, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import AvatarStatus from "../ui/avatarstatus";
+import LoadingModal from "../LoadingModal";
 
 interface UserBoxMobileProps {
   data: User;
@@ -30,16 +31,19 @@ const UserBox: React.FC<UserBoxMobileProps> = ({ data }) => {
   }, [data, router]);
 
   return (
-    <div
-      key={data.id}
-      onClick={handleClick}
-      className={cn(buttonVariants({ variant: "ghost", size: "xl" }), "shrink justify-start gap-4 cursor-pointer")}
-    >
-      <AvatarStatus user={data} />
-      <div className="flex flex-col max-w-28">
-        <span>{data.name}</span>
+    <>
+      {isLoading && <LoadingModal />}
+      <div
+        key={data.id}
+        onClick={handleClick}
+        className={cn(buttonVariants({ variant: "ghost", size: "xl" }), "shrink justify-start gap-4 cursor-pointer")}
+      >
+        <AvatarStatus user={data} />
+        <div className="flex flex-col max-w-28">
+          <span>{data.name}</span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
