@@ -7,6 +7,9 @@ import { format } from "date-fns";
 import { Button } from "../ui/button";
 import { Trash2 } from "lucide-react";
 import AvatarStatus from "../ui/avatarstatus";
+import ConfirmDeleteDialog from "./ConfirmDeleteDialog";
+import AvatarGroup from "../ui/avatargroup";
+import useActiveList from "@/app/hooks/useActiveList";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -15,8 +18,6 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
 } from "../ui/alert-dialog";
-import ConfirmDeleteDialog from "./ConfirmDeleteDialog";
-import AvatarGroup from "../ui/avatargroup";
 
 interface ProfileDialogProps {
   isOpen?: boolean;
@@ -28,6 +29,9 @@ interface ProfileDialogProps {
 
 const ProfileDialog: FC<ProfileDialogProps> = ({ isOpen, data, onClose }) => {
   const otherUser = useOtherUser(data);
+
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
 
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), "PP");
@@ -42,8 +46,8 @@ const ProfileDialog: FC<ProfileDialogProps> = ({ isOpen, data, onClose }) => {
       return `${data.users.length} members`;
     }
 
-    return "Active";
-  }, [data]);
+    return isActive ? "Active" : "Offline";
+  }, [data, isActive]);
 
   const [isOpenAlertDialog, setIsOpenAlertDialog] = useState(false);
 

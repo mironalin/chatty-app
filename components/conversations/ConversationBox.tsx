@@ -5,7 +5,6 @@ import { FC } from "react";
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { Conversation, Message, User } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { FullConversationType } from "@/app/types";
 import useOtherUser from "@/app/hooks/useOtherUser";

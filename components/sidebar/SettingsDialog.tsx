@@ -1,5 +1,17 @@
 "use client";
 
+import { Label } from "../ui/label";
+import { User } from "@prisma/client";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import React, { FC, useEffect, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "@/components/ui/use-toast";
+import { buttonVariants } from "../ui/button";
+import { Input } from "../ui/input";
+import Image from "next/image";
+import { CldUploadButton } from "next-cloudinary";
+import { cn } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,19 +23,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Label } from "../ui/label";
-import { User } from "@prisma/client";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import React, { FC, useEffect, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "@/components/ui/use-toast";
-import { Button, buttonVariants } from "../ui/button";
-import { Input } from "../ui/input";
-import Image from "next/image";
-import { CldUploadButton } from "next-cloudinary";
-import { cn } from "@/lib/utils";
-import { ButtonAuth } from "../ui/buttonAuth";
 
 interface SettingsDialogProps {
   isOpen?: boolean;
@@ -118,8 +117,15 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ isOpen, onClose, currentUser 
                 <Image
                   width={48}
                   height={48}
-                  className="rounded-full"
+                  className="rounded-full dark:hidden"
                   src={image || currentUser?.image || "/images/placeholder/placeholder.jpg"}
+                  alt="Avatar"
+                />
+                <Image
+                  width={48}
+                  height={48}
+                  className="hidden rounded-full dark:block"
+                  src={image || currentUser?.image || "/images/placeholder/placeholder-dark.jpg"}
                   alt="Avatar"
                 />
                 <CldUploadButton

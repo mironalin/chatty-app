@@ -24,7 +24,18 @@ const AvatarGroup: FC<AvatarGroupProps> = ({ users = [] }) => {
             positionMap[index as keyof typeof positionMap]
           }`}
         >
-          <Image alt="Group Avatar" fill src={user?.image || "/images/placeholder/placeholder.jpg"} />
+          <Image
+            alt="Group Avatar"
+            fill
+            src={user?.image || "/images/placeholder/placeholder.jpg"}
+            className="dark:hidden"
+          />
+          <Image
+            alt="Group Avatar"
+            fill
+            src={user?.image || "/images/placeholder/placeholder-dark.jpg"}
+            className="hidden dark:block"
+          />
         </div>
       ))}
     </div>

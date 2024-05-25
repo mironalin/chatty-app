@@ -9,7 +9,7 @@ export default async function UsersLayout({ children }: { children: React.ReactN
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       <Sidebar>
         <div className="h-full">
-          <UserList isCollapsed={false} items={users} />
+          <UserList items={users} />
           {children}
         </div>
       </Sidebar>

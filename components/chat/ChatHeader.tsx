@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
 import ProfileDrawer from "./ProfileDialog";
 import AvatarGroup from "../ui/avatargroup";
+import useActiveList from "@/app/hooks/useActiveList";
 
 interface ChatHeaderProps {
   conversation: Conversation & {
@@ -21,13 +22,16 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ conversation }) => {
   const otherUser = useOtherUser(conversation);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
+
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
       return `${conversation.users.length} members`;
     }
 
-    return "Active";
-  }, [conversation]);
+    return isActive ? "Active" : "Offline";
+  }, [conversation, isActive]);
 
   return (
     <>

@@ -12,7 +12,7 @@ export default async function ConversationsLayout({ children }: { children: Reac
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       <Sidebar>
         <div className="h-full">
-          <ConversationList isCollapsed={false} initialItems={conversations} users={users} />
+          <ConversationList initialItems={conversations} users={users} />
           {children}
         </div>
       </Sidebar>
