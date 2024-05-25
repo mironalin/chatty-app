@@ -69,7 +69,7 @@ const GroupChatDialog: FC<GroupChatDialogProps> = ({ isOpen, onClose, users }) =
 
   return (
     <AlertDialog open={isOpen}>
-      <AlertDialogContent className="w-9/12 sm:max-w-md rounded-lg">
+      <AlertDialogContent className="w-11/12 sm:max-w-md rounded-lg">
         <AlertDialogHeader>
           <AlertDialogTitle>Create a group chat</AlertDialogTitle>
           <AlertDialogDescription>Create a group chat with more than 2 people!</AlertDialogDescription>
@@ -113,7 +113,7 @@ const GroupChatDialog: FC<GroupChatDialogProps> = ({ isOpen, onClose, users }) =
             </div>
           </div>
           <AlertDialogFooter className="mt-6 gap-2 flex flex-row items-center justify-between">
-            <AlertDialogCancel className="w-full" disabled={isLoading} onClick={onClose}>
+            <AlertDialogCancel className="w-full m-0" disabled={isLoading} onClick={onClose}>
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction type="submit" className="w-full" disabled={isLoading}>

@@ -95,8 +95,8 @@ const ProfileDialog: FC<ProfileDialogProps> = ({ isOpen, data, onClose }) => {
               </dl>
             </div>
           </div>
-          <AlertDialogFooter className="flex flex-row justify-between gap-2">
-            <AlertDialogCancel className="w-full" onClick={onClose}>
+          <AlertDialogFooter className="flex flex-row items-center justify-between gap-2">
+            <AlertDialogCancel className="w-full m-0" onClick={onClose}>
               Close
             </AlertDialogCancel>
             <Button className="w-full" variant="destructive" onClick={() => setIsOpenAlertDialog(true)}>

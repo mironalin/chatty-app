@@ -148,7 +148,7 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ isOpen, onClose, currentUser 
           </div>
           <div>
             <AlertDialogFooter className="mt-6 gap-2 flex flex-row items-center justify-between">
-              <AlertDialogCancel className="w-full" disabled={isLoading} onClick={onClose}>
+              <AlertDialogCancel className="w-full m-0" disabled={isLoading} onClick={onClose}>
                 Cancel
               </AlertDialogCancel>
 
