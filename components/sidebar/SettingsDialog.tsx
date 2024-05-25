@@ -109,7 +109,14 @@ const SettingsDialog: FC<SettingsDialogProps> = ({ isOpen, onClose, currentUser 
           <div className="mt-6 flex flex-col gap-y-8">
             <div className="flex flex-col gap-4">
               <Label>Name</Label>
-              <Input disabled={isLoading} id="name" errors={errors} required register={register} />
+              <Input
+                className="!text-base"
+                disabled={isLoading}
+                id="name"
+                errors={errors}
+                required
+                register={register}
+              />
             </div>
             <div className="flex flex-col gap-4">
               <Label>Photo</Label>

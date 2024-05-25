@@ -69,7 +69,7 @@ const ChatBottomBar: FC<ChatBottomBarProps> = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-2 lg:gap-4 w-full">
             <Input
               id="message"
-              className="border-primary/10 font-light py-2 px-4 w-full rounded-full border-2 shadow-sm focus-visible:ring-transparent focus-visible:ring-0"
+              className="!text-base border-primary/10 font-light py-2 px-4 w-full rounded-full border-2 shadow-sm focus-visible:ring-transparent focus-visible:ring-0"
               register={register}
               errors={errors}
               required

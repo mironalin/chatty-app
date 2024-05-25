@@ -122,6 +122,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                 <div className="flex flex-col space-y-1.5 gap-2">
                   <Label htmlFor="name">Name</Label>
                   <Input
+                    className="!text-base"
                     id="name"
                     type="name"
                     placeholder=""
@@ -134,6 +135,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
               <div className="flex flex-col space-y-1.5 gap-2">
                 <Label htmlFor="email">E-mail address</Label>
                 <Input
+                  className="!text-base"
                   id="email"
                   type="email"
                   placeholder=""
@@ -142,9 +144,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                   disabled={isLoading}
                 />
               </div>
-              <div className="flex flex-col space-y-1.5 gap-2">
+              <div className="!text-base flex flex-col space-y-1.5 gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
+                  className="!text-base"
                   id="password"
                   type="password"
                   placeholder=""
