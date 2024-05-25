@@ -5,7 +5,6 @@ import { User } from "@prisma/client";
 import { MoreHorizontal, SquarePen } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import UserBoxMobile from "./UserBoxMobile";
 import UserBox from "./UserBox";
 
 interface UserListProps {
