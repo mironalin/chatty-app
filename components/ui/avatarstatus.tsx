@@ -14,7 +14,7 @@ const AvatarStatus: React.FC<AvatarStatusProps> = ({ user }) => {
 
   return (
     <div className="relative">
-      <div className="relative inline-block rounded-full overflow-hidden h-11 w-11 md:h-11 md:w-11">
+      <div className="relative rounded-full overflow-hidden h-11 w-11 md:h-11 md:w-11">
         <Image alt="Avatar" fill src={user?.image || "/images/placeholder/placeholder.jpg"} className="dark:hidden" />
         <Image
           alt="Avatar"
